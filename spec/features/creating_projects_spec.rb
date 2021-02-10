@@ -8,6 +8,7 @@ RSpec.feature "Users can create new Projects" do
   end
 
   scenario "with valid attributes" do
+
     fill_in "Name", with: "Visual Studio Code"
     fill_in "Description", with: "Code Editing. Redefined"
     click_button "Create Project"

@@ -26,7 +26,7 @@ RSpec.feature "Users can create new tickets" do
 
   scenario "with an invalid description" do
     fill_in "Name", with: "Non-standards compliance"
-    fill_in "Description", with: "Description is too short"
+    fill_in "Description", with: "short"
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has not been created."

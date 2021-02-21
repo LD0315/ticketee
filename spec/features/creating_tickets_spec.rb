@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.feature "Users can create new tickets" do
   let(:user) { FactoryBot.create(:user) }
   before do
-    login_as(user)
+    # login_as(user)
+    login_as(FactoryBot.create(:user, :admin))
     project = FactoryBot.create(:project, name: "Internet Explorer")
 
     visit project_path(project)

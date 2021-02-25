@@ -1,23 +1,28 @@
 require "rails_helper"
 
+
 RSpec.feature "Users can create new tickets" do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) {FactoryBot.create(:user)}
+  # a_different_user = FactoryBot.create(:user, email: "test4@example.com")
+  # FactoryBot.create(:ticket, author: a_different_user)
+
   before do
-    # login_as(user)
-    login_as(FactoryBot.create(:user, :admin))
+    login_as(user)
     project = FactoryBot.create(:project, name: "Internet Explorer")
 
     visit project_path(project)
     click_link "New Ticket"
   end
+    # login_as(FactoryBot.create(:user, :admin))
 
   scenario "with valid attributes" do
     fill_in "Name", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly!"
     click_button "Create Ticket"
+
     expect(page).to have_content "Ticket has been created."
     within(".ticket") do
-    expect(page).to have_content "Author: #{user.email}"
+      expect(page).to have_content "Author: #{user.email}"
     end
   end
 
@@ -31,7 +36,7 @@ RSpec.feature "Users can create new tickets" do
 
   scenario "with an invalid description" do
     fill_in "Name", with: "Non-standards compliance"
-    fill_in "Description", with: "short"
+    fill_in "Description", with: "It sucks"
     click_button "Create Ticket"
 
     expect(page).to have_content "Ticket has not been created."

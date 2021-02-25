@@ -1,4 +1,5 @@
-<%= bootstrap_form_with(model: project, local: true) do |form| %>
+<%= bootstrap_form_with(model: [:admin, project], local: true, label_errors: true) do |form|
+%>
   <% if project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(project.errors.count, "error") %>

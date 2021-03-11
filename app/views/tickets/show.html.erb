@@ -51,7 +51,6 @@
     </header>
 
     <% comments = @ticket.comments.persisted.ordered %>
-
     <% if comments.any? %>
       <% state = nil %>
       <% comments.each do |comment| %>

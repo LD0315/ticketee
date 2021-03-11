@@ -67,3 +67,4 @@ gem "font-awesome-rails", "= 4.7.0.6"
 gem "bootstrap_form", "= 4.5.0"
 
 gem "devise", "~> 4.7.3"
+gem 'pry-meta'
